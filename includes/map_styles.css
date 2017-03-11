@@ -23,7 +23,7 @@ html, body {
 }
 #header {
 	background-color: #542271;
-	background-image: url("apple-icon.png");
+	background-image: url("../img/apple-icon.png");
 	background-repeat: no-repeat;
 	background-size: 50px;
 	background-position: top left;
