@@ -1,0 +1,42 @@
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  font-family: Arial, Verdana;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #222;
+}
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+#map {
+  height: 93.5%;
+}
+#load {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: none;
+	text-align: center;
+	padding-top: 20%;
+}
+#header {
+	background-color: #542271;
+	background-image: url("apple-icon.png");
+	background-repeat: no-repeat;
+	background-size: 50px;
+	background-position: top left;
+	height: 50px;
+}
+
+h2 {
+	color: #6b2c91;
+}
+
+h1 {
+	font-size: 1.5em;
+  	color: #FFF;
+  	padding: 12px;
+  	margin: 0px 0px 0px 50px;
+}

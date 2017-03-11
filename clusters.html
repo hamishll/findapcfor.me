@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UoM PC Clusters</title>
+    <link rel="stylesheet" href="includes/map_styles.css"></link>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div id="header">
+      <h1>UoM PC Clusters</h1>
+    </div>
+    <div id="map"></div>
+    <div id="load">
+      <h2>Loading</h2>
+      <img src="img/load.svg">
+    </div>
+
+    <script src="includes/js_map_script.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmOHn_jP1rUqu2Tz1XjGRCae6jp5LwhGw&callback=initMap">
+    </script>
+  </body>
+</html>
