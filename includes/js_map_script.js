@@ -1,6 +1,7 @@
 var map;
 function initMap() { 
   loadMarkers();
+  // refresh every 5 minutes
   setInterval("loadMarkers()", 300000);
 }
 
@@ -14,7 +15,7 @@ function downloadUrl(url,callback) {
             //request.onreadystatechange = doNothing;
             callback(request, request.status);
 
-            //loading screen
+            //hide loading screen once AJAX is loaded
             var map_dom = document.getElementById("load");
             console.log(map_dom);
             map_dom.style.display = "none";
@@ -76,7 +77,7 @@ function loadMarkers() {
             }
             var markerColor = rgbToHex(rCol, gCol, 0);
 
-            // marker parameters
+            // marker parameters, size scales with availability
             var circle = {
               path: google.maps.SymbolPath.CIRCLE,
               fillColor: markerColor,
@@ -116,6 +117,7 @@ function loadMarkers() {
                 text: free,
                 color: 'white',
               },
+              // clusters with greater availability have a higher zIndex
               zIndex: parseInt(free),
             });
             

@@ -4,7 +4,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #222;
+  background: #FFF;
 }
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
@@ -22,12 +22,11 @@ html, body {
 	padding-top: 20%;
 }
 #header {
-	background-color: #542271;
 	background-image: url("../img/apple-icon.png");
 	background-repeat: no-repeat;
 	background-size: 50px;
 	background-position: top left;
-	height: 50px;
+	height: 49px;
 }
 
 h2 {
@@ -36,7 +35,7 @@ h2 {
 
 h1 {
 	font-size: 1.5em;
-  	color: #FFF;
+  	color: #222;
   	padding: 12px;
   	margin: 0px 0px 0px 50px;
 }
