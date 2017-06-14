@@ -56,74 +56,76 @@ function loadMarkers() {
             var free = availability.split(" ")[3].toString();
             var address = markers[i].getElementsByTagName("locationName")[0].innerHTML;
             
-            /*var image = {
-              url: 'cluster_map/marker.png',
-              size: new google.maps.Size(30, 30),
-              origin: new google.maps.Point(0, 0),
-              scaledSize: new google.maps.Size(30, 30)
-            };*/
+            if (open == 'true') {
+	            /*var image = {
+	              url: 'cluster_map/marker.png',
+	              size: new google.maps.Size(30, 30),
+	              origin: new google.maps.Point(0, 0),
+	              scaledSize: new google.maps.Size(30, 30)
+	            };*/
 
-            // markers get more 'red' once availability falls below threshold
-            var dangerZone = 50;
-            if (free < (dangerZone/2)) {
-                rCol = 255;
-                gCol = Math.round(200 * (2 * free/dangerZone));
-            } else if (free < dangerZone) {
-                rCol = Math.round(255 * (1 - (free - dangerZone/2)/(dangerZone/2)));
-                gCol = 200;
-            } else {
-              rCol = 0;
-              gCol = 200;
-            }
-            var markerColor = rgbToHex(rCol, gCol, 0);
+	            // markers get more 'red' once availability falls below threshold
+	            var dangerZone = 50;
+	            if (free < (dangerZone/2)) {
+	                rCol = 255;
+	                gCol = Math.round(200 * (2 * free/dangerZone));
+	            } else if (free < dangerZone) {
+	                rCol = Math.round(255 * (1 - (free - dangerZone/2)/(dangerZone/2)));
+	                gCol = 200;
+	            } else {
+	              rCol = 0;
+	              gCol = 200;
+	            }
+	            var markerColor = rgbToHex(rCol, gCol, 0);
 
-            // marker parameters, size scales with availability
-            var circle = {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: markerColor,
-              fillOpacity: .8,
-              scale: 10 + 30*(free/182),
-              strokeColor: 'white',
-              strokeWeight: 1.5
-            };
+	            // marker parameters, size scales with availability
+	            var circle = {
+	              path: google.maps.SymbolPath.CIRCLE,
+	              fillColor: markerColor,
+	              fillOpacity: .8,
+	              scale: 10 + 30*(free/182),
+	              strokeColor: 'white',
+	              strokeWeight: 1.5
+	            };
 
-            // mix up the coordinates to prevent overlap at locations with multiple clusters
-            deltax = (counter - 1) * 0.0001;
-            deltay = Math.floor(counter2 / 3) * 0.0001;
+	            // mix up the coordinates to prevent overlap at locations with multiple clusters
+	            deltax = (counter - 1) * 0.0001;
+	            deltay = Math.floor(counter2 / 3) * 0.0001;
 
-            // store coordinates
-            var point = new google.maps.LatLng(
-                parseFloat(markers[i].getElementsByTagName("latitude")[0].innerHTML) + deltax,
-                parseFloat(markers[i].getElementsByTagName("longitude")[0].innerHTML) + deltay);
+	            // store coordinates
+	            var point = new google.maps.LatLng(
+	                parseFloat(markers[i].getElementsByTagName("latitude")[0].innerHTML) + deltax,
+	                parseFloat(markers[i].getElementsByTagName("longitude")[0].innerHTML) + deltay);
 
-            // increment counters used to 'randomise' coordinates
-            counter++
-            if (counter > 2) {
-              counter = 0;
-            }
-            counter2++
-            if (counter2 > 12) {
-              counter2 = 1
-            }
+	            // increment counters used to 'randomise' coordinates
+	            counter++
+	            if (counter > 2) {
+	              counter = 0;
+	            }
+	            counter2++
+	            if (counter2 > 12) {
+	              counter2 = 1
+	            }
 
-            // placing marker and html box
-            var html = "<div class='infowindow'><b>" + name + "</b><br/>" + address  + "</b><br/>" + availability + '<br/></div>';
-            var marker = new google.maps.Marker({
-              map: map,
-              position: point,
-              icon: circle,
-              title: name,
-              label: {
-                text: free,
-                color: 'white',
-              },
-              // clusters with greater availability have a higher zIndex
-              zIndex: parseInt(free),
-            });
-            
-            map.markers.push(marker);
-            bindInfoWindow(marker, map, infoWindow, html);
-            /*console.log(freeColor);*/
+	            // placing marker and html box
+	            var html = "<div class='infowindow'><b>" + name + "</b><br/>" + address  + "</b><br/>" + availability + '<br/></div>';
+	            var marker = new google.maps.Marker({
+	              map: map,
+	              position: point,
+	              icon: circle,
+	              title: name,
+	              label: {
+	                text: free,
+	                color: 'white',
+	              },
+	              // clusters with greater availability have a higher zIndex
+	              zIndex: parseInt(free),
+	            });
+	            
+	            map.markers.push(marker);
+	            bindInfoWindow(marker, map, infoWindow, html);
+	            /*console.log(freeColor);*/
+        	}
         }
         catch(e)
         {console.log(name + " failed")}
